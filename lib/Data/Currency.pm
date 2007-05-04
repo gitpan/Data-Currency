@@ -1,4 +1,4 @@
-# $Id: Currency.pm 1761 2007-03-05 23:50:13Z claco $
+# $Id: Currency.pm 1823 2007-05-04 01:41:33Z claco $
 package Data::Currency;
 use strict;
 use warnings;
@@ -9,7 +9,7 @@ use overload
     fallback => 1;
 use vars qw/$VERSION/;
 
-$VERSION = '0.03';
+$VERSION = '0.04000';
 
 BEGIN {
     use base qw/Class::Accessor::Grouped/;

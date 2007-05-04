@@ -1,26 +1,20 @@
---- #YAML:1.0
-name: Data::Currency
-version: 0.03
 abstract: Container class for currency conversion/formatting
-license: perl
-generated_by: ExtUtils::MakeMaker version 6.30_01
-author: Christopher H. Laco <claco@chrislaco.com>
+author: Christopher H. Laco
 distribution_type: module
-requires:     
+generated_by: Module::Install version 0.64
+license: perl
+name: Data-Currency
+no_index: 
+  directory: 
+    - inc
+    - t
+requires: 
   Class::Accessor::Grouped: 0.03
   Class::Inspector: 0
   Finance::Currency::Convert::WebserviceX: 0.03
   Locale::Currency: 2.07
   Locale::Currency::Format: 1.22
   Scalar::Util: 0
-build_requires:
-  Test::More: 0.61
-recommends:
-  Pod::Coverage: 0.14
-  Test::Pod: 1.00
-  Test::Pod::Coverage: 1.04
-  Test::Spelling: 0.10
-  Test::CheckManifest: 0.07
-meta-spec:
-  url: <http://module-build.sourceforge.net/META-spec-new.html>;
-  version: 1.1
+  perl: 5.8.1
+tests: t/*.t
+version: 0.04000

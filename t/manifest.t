@@ -1,5 +1,5 @@
 #!perl -wT
-# $Id: manifest.t 1728 2007-02-09 03:42:12Z claco $
+# $Id: manifest.t 1823 2007-05-04 01:41:33Z claco $
 use strict;
 use warnings;
 
@@ -17,6 +17,6 @@ BEGIN {
 
 ok_manifest({
     exclude => ['/t/var', '/cover_db'],
-    filter  => [qr/\.svn/, qr/cover/],
+    filter  => [qr/\.svn/, qr/cover/, qr/Build.PL/],
     bool    => 'or'
 });
