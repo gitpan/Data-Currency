@@ -1,4 +1,6 @@
-# $Id: Makefile.PL 1823 2007-05-04 01:41:33Z claco $
+# $Id: Makefile.PL 1827 2007-05-04 23:53:18Z claco $
+use strict;
+use warnings;
 use inc::Module::Install;
 
 name 'Data-Currency';
@@ -15,6 +17,11 @@ requires 'Scalar::Util'             => '0';
 
 tests('t/*.t');
 clean_files "Data-Currency-* t/var";
+
+eval {
+    system 'pod2text lib/Data/Currency.pm > README';
+};
+
 
 auto_install;
 WriteAll;

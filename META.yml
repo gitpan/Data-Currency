@@ -1,20 +1,24 @@
-abstract: Container class for currency conversion/formatting
-author: Christopher H. Laco
-distribution_type: module
-generated_by: Module::Install version 0.64
-license: perl
+---
 name: Data-Currency
-no_index: 
-  directory: 
-    - inc
-    - t
-requires: 
+version: 0.04001
+author:
+  - Christopher H. Laco
+abstract: Container class for currency conversion/formatting
+license: perl
+resources:
+  license: http://dev.perl.org/licenses/
+requires:
   Class::Accessor::Grouped: 0.03
   Class::Inspector: 0
   Finance::Currency::Convert::WebserviceX: 0.03
   Locale::Currency: 2.07
   Locale::Currency::Format: 1.22
   Scalar::Util: 0
-  perl: 5.8.1
-tests: t/*.t
-version: 0.04000
+provides:
+  Data::Currency:
+    file: lib/Data/Currency.pm
+    version: 0.04001
+generated_by: Module::Build version 0.2805
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2
