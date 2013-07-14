@@ -1,24 +1,31 @@
 ---
-name: Data-Currency
-version: 0.04001
+abstract: 'Container class for currency conversion/formatting'
 author:
-  - Christopher H. Laco
-abstract: Container class for currency conversion/formatting
+  - 'Christopher H. Laco <claco _at_ chrislaco.com>, Mariano Wahlmann <dichoso _at_ gmail.com>'
+build_requires: {}
+configure_requires:
+  ExtUtils::MakeMaker: 6.30
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.300035, CPAN::Meta::Converter version 2.120921'
 license: perl
-resources:
-  license: http://dev.perl.org/licenses/
-requires:
-  Class::Accessor::Grouped: 0.03
-  Class::Inspector: 0
-  Finance::Currency::Convert::WebserviceX: 0.03
-  Locale::Currency: 2.07
-  Locale::Currency::Format: 1.22
-  Scalar::Util: 0
-provides:
-  Data::Currency:
-    file: lib/Data/Currency.pm
-    version: 0.04001
-generated_by: Module::Build version 0.2805
 meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.2.html
-  version: 1.2
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Data-Currency
+requires:
+  Class::Accessor::Grouped: 0
+  Class::Inspector: 0
+  Finance::Currency::Convert::WebserviceX: 0
+  Locale::Currency: 0
+  Locale::Currency::Format: 0
+  Scalar::Util: 0
+  Test::CheckManifest: 0
+  Test::Exception: 0
+  Test::MockObject: 0
+  Test::More: 0
+  Test::Spelling: 0
+  Test::Strict: 0
+resources:
+  homepage: https://github.com/bluescreen10/Data-Currency
+  repository: https://github.com/bluescreen10/Data-Currency.git
+version: 0.05
