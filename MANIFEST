@@ -1,12 +1,10 @@
 Changelog
-Changes
 LICENSE
 MANIFEST
 META.yml
 Makefile.PL
 README
 README.mkdn
-README.old
 TODO
 dist.ini
 lib/Data/Currency.pm

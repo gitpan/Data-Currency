@@ -4,7 +4,7 @@ Data::Currency
 
 # VERSION
 
-version 0.05
+version 0.0501
 
 # SYNOPSIS
 
@@ -38,7 +38,7 @@ Data::Currency - Container class for currency conversion/formatting
 
 # VERSION
 
-version 0.05
+version 0.0501
 
 # CONSTRUCTOR
 
@@ -145,7 +145,7 @@ Sames as `as_string`.
 
 Returns the current objects value as a formatted currency string.
 
-## as\_string
+## as\_float
 
 Returns the value formatted as float using decimal places specified by currency
 code

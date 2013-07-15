@@ -1,5 +1,11 @@
 Revision history for Data::Currency
 
+0.05001 Sun Jul 14 15:00:00 2013
+    - Corrected POD
+
+0.05 Sun Jul 14 15:00:00 2013
+    - Mathematical Operation overloads
+
 0.04002 Fri May 04 21:43:14 2007
     - Upgraded to Module::Install 0.65
 

@@ -1,7 +1,7 @@
 # $Id: Currency.pm 1830 2007-05-05 01:34:36Z claco $
 package Data::Currency;
 {
-  $Data::Currency::VERSION = '0.05';
+  $Data::Currency::VERSION = '0.0501';
 }
 use strict;
 use warnings;
@@ -318,7 +318,7 @@ Data::Currency
 
 =head1 VERSION
 
-version 0.05
+version 0.0501
 
 =head1 SYNOPSIS
 
@@ -352,7 +352,7 @@ Data::Currency - Container class for currency conversion/formatting
 
 =head1 VERSION
 
-version 0.05
+version 0.0501
 
 =head1 CONSTRUCTOR
 
@@ -479,7 +479,7 @@ Sames as C<as_string>.
 
 Returns the current objects value as a formatted currency string.
 
-=head2 as_string
+=head2 as_float
 
 Returns the value formatted as float using decimal places specified by currency
 code
