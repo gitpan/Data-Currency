@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-
+use 5.006001;
 
 use ExtUtils::MakeMaker 6.30;
 
@@ -26,15 +26,15 @@ my %WriteMakefileArgs = (
     "Locale::Currency" => 0,
     "Locale::Currency::Format" => 0,
     "Scalar::Util" => 0,
-    "Test::CheckManifest" => 0,
     "Test::Exception" => 0,
     "Test::MockObject" => 0,
-    "Test::More" => 0,
-    "Test::Spelling" => 0,
-    "Test::Strict" => 0
+    "Test::More" => 0
   },
-  "TEST_REQUIRES" => {},
-  "VERSION" => "0.0501",
+  "TEST_REQUIRES" => {
+    "Pod::Coverage::TrustPod" => 0,
+    "Test::Perl::Critic" => 0
+  },
+  "VERSION" => "0.06000",
   "test" => {
     "TESTS" => "t/*.t"
   }

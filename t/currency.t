@@ -1,5 +1,6 @@
-#!perl -wT
+#!/usr/bin/env perl
 # $Id: currency.t 1731 2007-02-11 20:35:41Z claco $
+
 use strict;
 use warnings;
 
@@ -79,6 +80,7 @@ BEGIN {
     eval { $currency->convert('BAD'); };
     like( $@, qr/invalid currency code/i );
 };
+
 
 ## croak convert with bad source code
 {
@@ -218,6 +220,7 @@ BEGIN {
     eval { Data::Currency->converter_class('Bogus'); };
     like( $@, qr/Bogus could not be loaded/i );
 };
+
 
 ## test convert
 SKIP: {

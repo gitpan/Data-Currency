@@ -2,7 +2,9 @@
 abstract: 'Container class for currency conversion/formatting'
 author:
   - 'Christopher H. Laco <claco _at_ chrislaco.com>, Mariano Wahlmann <dichoso _at_ gmail.com>'
-build_requires: {}
+build_requires:
+  Pod::Coverage::TrustPod: 0
+  Test::Perl::Critic: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
@@ -19,13 +21,11 @@ requires:
   Locale::Currency: 0
   Locale::Currency::Format: 0
   Scalar::Util: 0
-  Test::CheckManifest: 0
   Test::Exception: 0
   Test::MockObject: 0
   Test::More: 0
-  Test::Spelling: 0
-  Test::Strict: 0
+  perl: 5.006001
 resources:
   homepage: https://github.com/bluescreen10/Data-Currency
   repository: https://github.com/bluescreen10/Data-Currency.git
-version: 0.0501
+version: 0.06000

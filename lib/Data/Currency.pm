@@ -1,10 +1,12 @@
-# $Id: Currency.pm 1830 2007-05-05 01:34:36Z claco $
+## no critic (RequireUseStrict)
 package Data::Currency;
 {
-  $Data::Currency::VERSION = '0.0501';
+  $Data::Currency::VERSION = '0.06000';
 }
+## use critic
 use strict;
 use warnings;
+
 use overload
   '0+'     => sub { shift->value },
   'bool'   => sub { shift->value },
@@ -15,7 +17,7 @@ use overload
   '/'      => \&_divide,
   '%'      => \&_modulo,
   '<=>'    => \&_three_way_compare,
-  'cmp'    => \&_three_way_compare,
+  'cmp'    => \&_three_way_compare_string,
   'abs'    => \&_abs,
   'int'    => \&_int,
   'neg'    => \&_negate,
@@ -94,16 +96,15 @@ sub convert {
     my $class = Scalar::Util::blessed($self);
     my $from  = $self->code;
 
-    $to ||= '';
-    if ( uc($from) eq uc($to) ) {
-        return $self;
-    }
-
     croak 'Invalid currency code source: ' . ( $from || 'undef' )
       unless _is_currency_code($from);
 
     croak 'Invalid currency code target: ' . ( $to || 'undef' )
       unless _is_currency_code($to);
+
+    if ( uc($from) eq uc($to) ) {
+        return $self;
+    }
 
     if ( !$self->converter ) {
         $self->converter( $self->converter_class->new );
@@ -137,7 +138,9 @@ sub stringify {
     }
 
     ## funky eval to get string versions of constants back into the values
+    ## no critic (ProhibitStringyEval)
     eval '$format = Locale::Currency::Format::' . $format;
+    ## use critic
 
     croak 'Invalid currency code:  ' . ( $code || 'undef' )
       unless _is_currency_code($code);
@@ -186,7 +189,10 @@ sub set_component_class {
 
     if ($value) {
         if ( !Class::Inspector->loaded($value) ) {
+
+            ## no critic (ProhibitStringyEval)
             eval "use $value";
+            ## use critic
 
             croak "The $field $value could not be loaded: $@" if $@;
         }
@@ -212,6 +218,7 @@ sub _add {
         $other = $other->value;
     }
 
+    $other = defined $other ? $other : 0;
     __PACKAGE__->new( $self->value + $other, $self->code, $self->format );
 }
 
@@ -225,6 +232,7 @@ sub _substract {
         $other = $other->value;
     }
 
+    $other = defined $other ? $other : 0;
     my $new_value = $reversed ? $other - $self->value : $self->value - $other;
     __PACKAGE__->new( $new_value, $self->code, $self->format );
 }
@@ -239,6 +247,7 @@ sub _multiply {
         $other = $other->value;
     }
 
+    $other = defined $other ? $other : 0;
     __PACKAGE__->new( $self->value * $other, $self->code, $self->format );
 }
 
@@ -251,6 +260,8 @@ sub _divide {
 
         $other = $other->value;
     }
+
+    $other = defined $other ? $other : 0;
 
     croak "Illegal division by zero"
       if $other == 0
@@ -291,6 +302,21 @@ sub _three_way_compare {
     return $reversed ? $other <=> $self->value : $self->value <=> $other;
 }
 
+sub _three_way_compare_string {
+    my ( $self, $other, $reversed ) = @_;
+
+    if ( Scalar::Util::blessed($other) && $other->isa(__PACKAGE__) ) {
+        croak "Unable to perform comparison with different currency types"
+          if $self->code ne $other->code;
+
+        $other = $other->as_string;
+    }
+
+    return $reversed
+      ? $other cmp $self->as_string
+      : $self->as_string cmp $other;
+}
+
 sub _abs {
     my $self = shift;
     __PACKAGE__->new( abs( $self->value ), $self->code, $self->format );
@@ -318,13 +344,14 @@ Data::Currency
 
 =head1 VERSION
 
-version 0.0501
+version 0.06000
 
 =head1 SYNOPSIS
 
     use Data::Currency;
 
     my $price = Data::Currency->new(1.2, 'USD');
+
     print $price;            # 1.20 USD
     print $price->code;      # USD
     print $price->format;    # FMT_SYMBOL
@@ -352,7 +379,7 @@ Data::Currency - Container class for currency conversion/formatting
 
 =head1 VERSION
 
-version 0.0501
+version 0.06000
 
 =head1 CONSTRUCTOR
 

@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use Data::Currency;
 use Test::Exception;
-use Test::More tests => 10;
+use Test::More tests => 11;
 
 {
     my $value1 = Data::Currency->new( 1.2, 'USD' );
@@ -47,4 +47,12 @@ use Test::More tests => 10;
     my $value1 = Data::Currency->new( 1.2, 'USD' );
     my $value2 = Data::Currency->new(0);
     dies_ok sub { $value1 / $value2 }, 'Division by zero';
+}
+
+{
+    local $SIG{__WARN__} = sub { die "Warnings" };
+    my $value1 = Data::Currency->new( 1.2, 'USD' );
+    my $value2 = undef;
+    throws_ok sub { $value1 / $value2 },
+      qr/division by zero/, 'Division by zero';
 }

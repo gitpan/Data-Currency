@@ -1,17 +1,18 @@
+[![Build Status](https://api.travis-ci.org/bluescreen10/Data-Currency.png)](https://travis-ci.org/Bluescreen10/Data-Currency)
+
 # NAME
 
 Data::Currency
 
 # VERSION
 
-version 0.06000
+version 0.0501
 
 # SYNOPSIS
 
     use Data::Currency;
 
     my $price = Data::Currency->new(1.2, 'USD');
-
     print $price;            # 1.20 USD
     print $price->code;      # USD
     print $price->format;    # FMT_SYMBOL
@@ -39,7 +40,7 @@ Data::Currency - Container class for currency conversion/formatting
 
 # VERSION
 
-version 0.06000
+version 0.0501
 
 # CONSTRUCTOR
 
